@@ -1,0 +1,164 @@
+﻿<UserControl x:Class="VirtualMouseKeyboard.Controls.OnScreenKeyboard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VirtualMouseKeyboard.Controls"
+             mc:Ignorable="d">
+    <Border BorderThickness="2" Margin="7" BorderBrush="Black">
+        <Grid>
+            <Grid.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="VerticalAlignment" Value="Stretch"/>
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <local:VirtualKey Key="`" Content="`" Grid.Column="0"/>
+                <local:VirtualKey Key="1" Content="1" Grid.Column="1"/>
+                <local:VirtualKey Key="2" Content="2" Grid.Column="2"/>
+                <local:VirtualKey Key="3" Content="3" Grid.Column="3"/>
+                <local:VirtualKey Key="4" Content="4" Grid.Column="4"/>
+                <local:VirtualKey Key="5" Content="5" Grid.Column="5"/>
+                <local:VirtualKey Key="6" Content="6" Grid.Column="6"/>
+                <local:VirtualKey Key="7" Content="7" Grid.Column="7"/>
+                <local:VirtualKey Key="8" Content="8" Grid.Column="8"/>
+                <local:VirtualKey Key="9" Content="9" Grid.Column="9"/>
+                <local:VirtualKey Key="0" Content="0" Grid.Column="10"/>
+                <local:VirtualKey Key="-" Content="-" Grid.Column="11"/>
+                <local:VirtualKey Key="+" Content="+" Grid.Column="12"/>
+                <local:VirtualKey Key="Backspace" Content="Backspace" Grid.Column="13"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                </Grid.ColumnDefinitions>
+                <local:VirtualKey Key="Tab" Content="Tab" Grid.Column="0"/>
+                <local:VirtualKey Key="Q" Content="Q" Grid.Column="1"/>
+                <local:VirtualKey Key="W" Content="W" Grid.Column="2"/>
+                <local:VirtualKey Key="E" Content="E" Grid.Column="3"/>
+                <local:VirtualKey Key="R" Content="R" Grid.Column="4"/>
+                <local:VirtualKey Key="T" Content="T" Grid.Column="5"/>
+                <local:VirtualKey Key="Y" Content="Y" Grid.Column="6"/>
+                <local:VirtualKey Key="U" Content="U" Grid.Column="7"/>
+                <local:VirtualKey Key="I" Content="I" Grid.Column="8"/>
+                <local:VirtualKey Key="O" Content="O" Grid.Column="9"/>
+                <local:VirtualKey Key="P" Content="P" Grid.Column="10"/>
+                <local:VirtualKey Key="[" Content="[" Grid.Column="11"/>
+                <local:VirtualKey Key="]" Content="]" Grid.Column="12"/>
+                <local:VirtualKey Key="\" Content="\" Grid.Column="13"/>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <local:VirtualKey Key="Caps Lock" Content="Caps Lock" Grid.Column="0"/>
+                <local:VirtualKey Key="A" Content="A" Grid.Column="1"/>
+                <local:VirtualKey Key="S" Content="S" Grid.Column="2"/>
+                <local:VirtualKey Key="D" Content="D" Grid.Column="3"/>
+                <local:VirtualKey Key="F" Content="F" Grid.Column="4"/>
+                <local:VirtualKey Key="G" Content="G" Grid.Column="5"/>
+                <local:VirtualKey Key="H" Content="H" Grid.Column="6"/>
+                <local:VirtualKey Key="J" Content="J" Grid.Column="7"/>
+                <local:VirtualKey Key="K" Content="K" Grid.Column="8"/>
+                <local:VirtualKey Key="L" Content="L" Grid.Column="9"/>
+                <local:VirtualKey Key=":" Content=":" Grid.Column="10"/>
+                <local:VirtualKey Key="&quot;" Content="&quot;" Grid.Column="11"/>
+                <local:VirtualKey Key="Enter" Content="Enter" Grid.Column="12"/>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2.5*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2.5*"/>
+                </Grid.ColumnDefinitions>
+                <local:VirtualKey Key="Shift" Content="Shift" Grid.Column="0"/>
+                <local:VirtualKey Key="Z" Content="Z" Grid.Column="1"/>
+                <local:VirtualKey Key="X" Content="X" Grid.Column="2"/>
+                <local:VirtualKey Key="C" Content="C" Grid.Column="3"/>
+                <local:VirtualKey Key="V" Content="V" Grid.Column="4"/>
+                <local:VirtualKey Key="B" Content="B" Grid.Column="5"/>
+                <local:VirtualKey Key="N" Content="N" Grid.Column="6"/>
+                <local:VirtualKey Key="M" Content="M" Grid.Column="7"/>
+                <local:VirtualKey Key="&lt;" Content="&lt;" Grid.Column="8"/>
+                <local:VirtualKey Key=">" Content=">" Grid.Column="9"/>
+                <local:VirtualKey Key="?" Content="?" Grid.Column="10"/>
+                <local:VirtualKey Key="Shift" Content="Shift" Grid.Column="11"/>
+            </Grid>
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <local:VirtualKey Key="Control" Content="Control" Grid.Column="0"/>
+                <local:VirtualKey Key="WIN" Content="WIN" Grid.Column="1"/>
+                <local:VirtualKey Key="Alt" Content="Alt" Grid.Column="2"/>
+                <local:VirtualKey Key="Space" Content="Space" Grid.Column="3"/>
+                <local:VirtualKey Key="Alt" Content="Alt" Grid.Column="4"/>
+                <local:VirtualKey Key="Control" Content="Control" Grid.Column="5"/>
+            </Grid>
+        </Grid>
+    </Border>
+
+</UserControl>

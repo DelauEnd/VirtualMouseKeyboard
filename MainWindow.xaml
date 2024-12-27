@@ -1,0 +1,17 @@
+﻿<Window x:Class="VirtualMouseKeyboard.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:VirtualMouseKeyboard.Controls"
+        xmlns:local="clr-namespace:VirtualMouseKeyboard"
+        mc:Ignorable="d"
+        Name="Application"
+        Title="MainWindow" WindowState="Maximized" AllowsTransparency="True" WindowStyle="None" Focusable="False">
+    <Window.Background>
+        <SolidColorBrush Opacity="0.1" Color="Transparent"/>
+    </Window.Background>
+    <Grid Name="MainGrid" Height="400" Margin="0,0,0,50" VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
+        <controls:OnScreenKeyboard x:Name="VirtualKeyboard" Width="1000" />
+    </Grid>
+</Window>

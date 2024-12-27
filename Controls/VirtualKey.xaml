@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="VirtualMouseKeyboard.Controls.VirtualKey"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VirtualMouseKeyboard.Controls"
+             mc:Ignorable="d"
+             PreviewMouseDown="Key_MouseDown"  PreviewMouseUp="Key_MouseUp" MouseLeave="Key_MouseLeave"
+             PreviewTouchDown="Key_TouchDown" PreviewTouchUp="Key_TouchUp" TouchLeave="Key_TouchLeave"
+             Focusable="False">
+    <Grid>
+        <Border BorderThickness="1" BorderBrush="Black" Name="KeyButton">
+            <Grid>
+                <Grid Name="DefaultBackground" Background="AntiqueWhite" Visibility="Visible">
+
+                </Grid>
+
+                <Grid Name="ClickedBackground" Background="Gray" Visibility="Collapsed">
+
+                </Grid>
+
+
+                <Label Content="{Binding Content, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                    VerticalAlignment="Center" HorizontalAlignment="Center" 
+                    VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
