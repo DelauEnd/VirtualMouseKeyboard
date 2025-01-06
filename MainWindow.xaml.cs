@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Interop;
+using VirtualMouseKeyboard.Behaviour.Configuration;
 using VirtualMouseKeyboard.Behaviour.WindowsInterop;
 
 namespace VirtualMouseKeyboard
@@ -9,9 +10,12 @@ namespace VirtualMouseKeyboard
     /// </summary>
     public partial class MainWindow : Window
     {
+        public ConfigurationManager ConfigurationManager { get; }
+
         public MainWindow()
         {
             Topmost = true;
+            ConfigurationManager = App.Instance.ConfigurationManager;
 
             InitializeComponent();
 
@@ -25,14 +29,14 @@ namespace VirtualMouseKeyboard
         }
         private void InputFocusedListener_TextInputFocused()
         {
-            Application.Dispatcher.Invoke(() =>
+            Application.Current.Dispatcher.Invoke(() =>
             {
                 this.VirtualKeyboard.Visibility = Visibility.Visible;
             });
         }
         private void InputFocusedListener_TextInputLostFocus()
         {
-            Application.Dispatcher.Invoke(() =>
+            Application.Current.Dispatcher.Invoke(() =>
             {
                 this.VirtualKeyboard.Visibility = Visibility.Collapsed;
             });

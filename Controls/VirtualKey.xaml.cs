@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace VirtualMouseKeyboard.Controls
 {
@@ -48,11 +39,18 @@ namespace VirtualMouseKeyboard.Controls
         }
 
 
-        public bool _partiallySelected;
+        private bool _partiallySelected;
+        private readonly DispatcherTimer _keyHoldTimer;
 
         public VirtualKey()
         {
             InitializeComponent();
+
+            _keyHoldTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(App.Instance.ConfigurationManager.Configuration.HoldFrequency)
+            };
+            _keyHoldTimer.Tick += (s, e) => App.Instance.KeyboardInterop.KeyDown(Key);
         }
 
         public void ChangeState(bool keyState)
@@ -77,6 +75,8 @@ namespace VirtualMouseKeyboard.Controls
             App.Instance.InputFocusedListener.SetFocusOnLast();
 
             App.Instance.KeyboardInterop.KeyDown(Key);
+
+            _keyHoldTimer.Start();
         }
 
         private void SetKeyUp()
@@ -89,6 +89,8 @@ namespace VirtualMouseKeyboard.Controls
             App.Instance.InputFocusedListener.SetFocusOnLast();
 
             App.Instance.KeyboardInterop.KeyUp(Key);
+
+            _keyHoldTimer.Stop();
         }
 
         private void Key_MouseDown(object sender, MouseButtonEventArgs e)

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Windows;
 using VirtualMouseKeyboard.Behaviour.Utils;
@@ -81,7 +80,7 @@ namespace VirtualMouseKeyboard.Behaviour.WindowsInterop
             }
             else
             {
-                MessageBox.Show("fuck " + key);
+                MessageBox.Show("Key not found " + key);
             }
         }
 
@@ -105,6 +104,10 @@ namespace VirtualMouseKeyboard.Behaviour.WindowsInterop
                     }
                 };
                 SendInput((uint)inputs.Length, inputs, Marshal.SizeOf(typeof(INPUT)));
+            }
+            else
+            {
+                MessageBox.Show("Key not found " + key);
             }
         }
     }

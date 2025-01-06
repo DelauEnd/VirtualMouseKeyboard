@@ -17,7 +17,7 @@ namespace VirtualMouseKeyboard.Behaviour.WindowsInterop
         {
             _currentProcessId = Process.GetCurrentProcess().Id;
         }
-
+        
         public void StartListening()
         {
             Automation.AddAutomationFocusChangedEventHandler(OnFocusChanged);
@@ -60,7 +60,7 @@ namespace VirtualMouseKeyboard.Behaviour.WindowsInterop
                 }
                 catch(Exception ex)
                 {
-
+                    Console.WriteLine($"{ex.Message} || {ex.StackTrace}");
                 }
             }
         }

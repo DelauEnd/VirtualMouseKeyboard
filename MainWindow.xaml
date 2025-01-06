@@ -4,14 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:VirtualMouseKeyboard.Controls"
+        xmlns:converters="clr-namespace:VirtualMouseKeyboard.Converters"
         xmlns:local="clr-namespace:VirtualMouseKeyboard"
         mc:Ignorable="d"
-        Name="Application"
+        Name="Window"
         Title="MainWindow" WindowState="Maximized" AllowsTransparency="True" WindowStyle="None" Focusable="False">
+    <Window.Resources>
+        <converters:BoolToVisibilityConverter  x:Key="boolVisibilityConverter"/>
+    </Window.Resources>
     <Window.Background>
         <SolidColorBrush Opacity="0.1" Color="Transparent"/>
     </Window.Background>
     <Grid Name="MainGrid" Height="400" Margin="0,0,0,50" VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
-        <controls:OnScreenKeyboard x:Name="VirtualKeyboard" Width="1000" />
+        <Grid Visibility="{Binding ElementName=Window, Path=ConfigurationManager.Configuration.ShowKeyboard, Converter={StaticResource boolVisibilityConverter}}">
+            <controls:OnScreenKeyboard x:Name="VirtualKeyboard" Width="1000" />
+        </Grid>
     </Grid>
 </Window>
