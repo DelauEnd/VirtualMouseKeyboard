@@ -15,9 +15,16 @@
     <Window.Background>
         <SolidColorBrush Opacity="0.1" Color="Transparent"/>
     </Window.Background>
-    <Grid Name="MainGrid" Height="400" Margin="0,0,0,50" VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
-        <Grid Visibility="{Binding ElementName=Window, Path=ConfigurationManager.Configuration.ShowKeyboard, Converter={StaticResource boolVisibilityConverter}}">
+    <Grid Name="MainGrid" Height="400" Margin="0,0,0,50" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Margin="10" Visibility="{Binding ElementName=Window, Path=ConfigurationManager.Configuration.ShowKeyboard, Converter={StaticResource boolVisibilityConverter}}">
             <controls:OnScreenKeyboard x:Name="VirtualKeyboard" Width="1000" />
+        </Grid>
+        <Grid Grid.Column="1" Margin="10" Visibility="{Binding ElementName=Window, Path=ConfigurationManager.Configuration.ShowMouse, Converter={StaticResource boolVisibilityConverter}}">
+            <controls:OnScreenMouse x:Name="VirtualMouse"/>
         </Grid>
     </Grid>
 </Window>

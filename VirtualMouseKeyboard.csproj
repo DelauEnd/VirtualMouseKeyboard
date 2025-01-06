@@ -64,6 +64,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\OnScreenMouse.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\VirtualJoystick.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\VirtualKey.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -84,6 +92,12 @@
     <Compile Include="Behaviour\WindowsInterop\WinFocusListener.cs" />
     <Compile Include="Controls\OnScreenKeyboard.xaml.cs">
       <DependentUpon>OnScreenKeyboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OnScreenMouse.xaml.cs">
+      <DependentUpon>OnScreenMouse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\VirtualJoystick.xaml.cs">
+      <DependentUpon>VirtualJoystick.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\VirtualKey.xaml.cs">
       <DependentUpon>VirtualKey.xaml</DependentUpon>

@@ -10,13 +10,16 @@ namespace VirtualMouseKeyboard
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static MainWindow Instance { get; private set; }
+
         public ConfigurationManager ConfigurationManager { get; }
 
         public MainWindow()
         {
+            Instance = this;
+
             Topmost = true;
             ConfigurationManager = App.Instance.ConfigurationManager;
-
             InitializeComponent();
 
             // Make window clickThrough

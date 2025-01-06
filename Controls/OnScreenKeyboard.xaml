@@ -5,7 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VirtualMouseKeyboard.Controls"
              mc:Ignorable="d">
-    <Border BorderThickness="2" Margin="7" BorderBrush="Black">
+    <Border BorderThickness="2">
+        <Border.BorderBrush>
+            <SolidColorBrush Color="Black" Opacity="0.5" />
+        </Border.BorderBrush>
         <Grid>
             <Grid.Resources>
                 <Style TargetType="Button">
