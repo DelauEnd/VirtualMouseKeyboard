@@ -60,11 +60,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\LeftMouseButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MouseWheel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\OnScreenKeyboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\OnScreenMouse.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\RightMouseButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\VirtualCursor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -89,12 +105,25 @@
     <Compile Include="Behaviour\Utils\KeyCodeMap.cs" />
     <Compile Include="Behaviour\WindowsInterop\AppWindowHelper.cs" />
     <Compile Include="Behaviour\WindowsInterop\KeyboardInterop.cs" />
+    <Compile Include="Behaviour\WindowsInterop\MouseInterop.cs" />
     <Compile Include="Behaviour\WindowsInterop\WinFocusListener.cs" />
+    <Compile Include="Controls\LeftMouseButton.xaml.cs">
+      <DependentUpon>LeftMouseButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MouseWheel.xaml.cs">
+      <DependentUpon>MouseWheel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\OnScreenKeyboard.xaml.cs">
       <DependentUpon>OnScreenKeyboard.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\OnScreenMouse.xaml.cs">
       <DependentUpon>OnScreenMouse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RightMouseButton.xaml.cs">
+      <DependentUpon>RightMouseButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\VirtualCursor.xaml.cs">
+      <DependentUpon>VirtualCursor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\VirtualJoystick.xaml.cs">
       <DependentUpon>VirtualJoystick.xaml</DependentUpon>
@@ -135,6 +164,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Cursor.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -2,6 +2,7 @@
 using System.Windows.Interop;
 using VirtualMouseKeyboard.Behaviour.Configuration;
 using VirtualMouseKeyboard.Behaviour.WindowsInterop;
+using VirtualMouseKeyboard.Controls;
 
 namespace VirtualMouseKeyboard
 {

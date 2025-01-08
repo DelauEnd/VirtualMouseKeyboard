@@ -17,21 +17,17 @@ namespace VirtualMouseKeyboard.Controls
 
         private bool _captured = false;
 
-        // Public properties to get X and Y values
         public double X { get; private set; }
         public double Y { get; private set; }
 
-        // Event to notify whenever joystick values change
-        public event EventHandler<JoystickEventArgs> JoystickMoved;
+        public Action<Vector> JoystickMoved;
 
         public VirtualJoystick()
         {
             InitializeComponent();
 
-            // Set up the joystick size and stick size when the size of the control is set
             JoystickCanvas.SizeChanged += JoystickCanvas_SizeChanged;
 
-            // Event handlers for mouse and touch input
             JoystickCanvas.MouseDown += JoystickCanvas_InputDown;
             JoystickCanvas.MouseUp += JoystickCanvas_InputUp;
             JoystickCanvas.TouchDown += JoystickCanvas_InputDown;
@@ -50,15 +46,12 @@ namespace VirtualMouseKeyboard.Controls
 
         private void JoystickCanvas_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            // Adjust joystick and stick sizes based on control size
             _joystickRadius = Math.Min(JoystickCanvas.ActualWidth, JoystickCanvas.ActualHeight) / 2;
-            _stickRadius = _joystickRadius * 0.5; // Stick size is 0.5 of joystick size
+            _stickRadius = _joystickRadius * 0.5; 
 
-            // Set the center coordinates
             _joystickCenterX = JoystickCanvas.ActualWidth / 2;
             _joystickCenterY = JoystickCanvas.ActualHeight / 2;
 
-            // Set background and stick sizes and position them at the center
             JoystickBackground.Width = _joystickRadius * 2;
             JoystickBackground.Height = _joystickRadius * 2;
             JoystickBackground.Margin = new Thickness(_joystickCenterX - _joystickRadius, _joystickCenterY - _joystickRadius, 0, 0);
@@ -77,7 +70,6 @@ namespace VirtualMouseKeyboard.Controls
             var position = GetInputPosition(e);
             MoveStick(position);
 
-            // Hook up MouseMove or TouchMove depending on the input method
             if (e is MouseButtonEventArgs)
                 JoystickCanvas.MouseMove += JoystickCanvas_InputMove;
             else if (e is TouchEventArgs)
@@ -92,12 +84,10 @@ namespace VirtualMouseKeyboard.Controls
 
             ResetJoystick();
 
-            // Unhook MouseMove or TouchMove
             JoystickCanvas.MouseMove -= JoystickCanvas_InputMove;
             JoystickCanvas.TouchMove -= JoystickCanvas_InputMove;
 
-            // Notify listeners that the joystick has moved
-            JoystickMoved?.Invoke(this, new JoystickEventArgs(X, Y));
+            JoystickMoved?.Invoke(new Vector(X, Y));
         }
 
         private void JoystickCanvas_InputMove(object sender, RoutedEventArgs e)
@@ -111,7 +101,6 @@ namespace VirtualMouseKeyboard.Controls
 
         private Point GetInputPosition(RoutedEventArgs e)
         {
-            // Handle both mouse and touch input
             if (e is MouseEventArgs mouseArgs)
                 return mouseArgs.GetPosition(JoystickCanvas);
             else if (e is TouchEventArgs touchArgs)
@@ -122,10 +111,10 @@ namespace VirtualMouseKeyboard.Controls
 
         private void ResetJoystick()
         {
-            // Reset position to center when input is released
             X = 0;
             Y = 0;
             JoystickStick.Margin = new Thickness(_joystickCenterX - _stickRadius, _joystickCenterY - _stickRadius, 0, 0);
+            JoystickMoved?.Invoke(new Vector(X, Y));
         }
 
         private void MoveStick(Point inputPosition)
@@ -143,28 +132,12 @@ namespace VirtualMouseKeyboard.Controls
                 deltaY = (_joystickRadius - _stickRadius) * Math.Sin(angle);
             }
 
-            // Set the new position for the stick
             JoystickStick.Margin = new Thickness(_joystickCenterX + deltaX - _stickRadius, _joystickCenterY + deltaY - _stickRadius, 0, 0);
 
-            // Update X and Y values
             X = deltaX / (_joystickRadius - _stickRadius);
             Y = deltaY / (_joystickRadius - _stickRadius);
 
-            // Notify listeners about the movement
-            JoystickMoved?.Invoke(this, new JoystickEventArgs(X, Y));
-        }
-    }
-
-    // Custom event arguments to pass X and Y values
-    public class JoystickEventArgs : EventArgs
-    {
-        public double X { get; }
-        public double Y { get; }
-
-        public JoystickEventArgs(double x, double y)
-        {
-            X = x;
-            Y = y;
+            JoystickMoved?.Invoke(new Vector(X, Y));
         }
     }
 }

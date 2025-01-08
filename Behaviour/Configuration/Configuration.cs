@@ -24,7 +24,10 @@ namespace VirtualMouseKeyboard.Behaviour.Configuration
         private bool _showMouse = true;
         public bool ShowMouse { get => _showMouse; set => _showMouse = value; }
 
-        private int _virtualMouseSensitivity;
+        private int _virtualMouseSensitivity = 10;
         public int VirtualMouseSensitivity { get => _virtualMouseSensitivity; set => _virtualMouseSensitivity = value; }
+
+        private int _virtualMouseScrollAmount = 50;
+        public int VirtualMouseScrollAmount { get => _virtualMouseScrollAmount; set => _virtualMouseScrollAmount = value; }
     }
 }

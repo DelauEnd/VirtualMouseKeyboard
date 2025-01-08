@@ -4,15 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VirtualMouseKeyboard.Controls"
-             mc:Ignorable="d" >
-    <Border BorderThickness="2">
+             mc:Ignorable="d" d:DesignHeight="400" d:DesignWidth="220">
+    <Border BorderThickness="2" CornerRadius="55,55,0,0">
         <Border.Background>
             <SolidColorBrush Color="Black" Opacity="0.5" />
         </Border.Background>
         <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
@@ -20,17 +20,13 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-                <Border Grid.Column="0">
-
-                </Border>
-                <Border Grid.Column="1">
-
-                </Border>
-                <Border Grid.Column="2">
-
-                </Border>
+                <local:LeftMouseButton Grid.Column="0" x:Name="LeftButton" Margin="5"/>
+                <local:MouseWheel Grid.Column="1" x:Name="Wheel" Margin="5" Height="auto"/>
+                <local:RightMouseButton Grid.Column="2" x:Name="RightButton" Margin="5"/>
             </Grid>
-            <local:VirtualJoystick Grid.Row="1"/>
+            <Border Grid.Row="1">
+                <local:VirtualJoystick x:Name="Joystick" BorderBrush="AntiqueWhite" BorderThickness="4,0,4,4" Margin="5"/>
+            </Border>
         </Grid>
     </Border>
 </UserControl>
