@@ -14,6 +14,7 @@ namespace VirtualMouseKeyboard
         public ConfigurationManager ConfigurationManager;
         public WinFocusListener InputFocusedListener;
         public KeyboardInterop KeyboardInterop;
+        public MouseInterop MouseInterop;
 
 
         private void Application_Startup(object sender, StartupEventArgs e)
@@ -27,6 +28,8 @@ namespace VirtualMouseKeyboard
             InputFocusedListener.StartListening();
 
             KeyboardInterop = new KeyboardInterop();
+
+            MouseInterop = new MouseInterop();
         }
         private void Application_Exit(object sender, ExitEventArgs e)
         {

@@ -12,19 +12,12 @@ namespace VirtualMouseKeyboard.Controls
     public partial class RightMouseButton : UserControl
     {
         private bool _partiallySelected;
-        private readonly DispatcherTimer _keyHoldTimer;
 
         public Action<bool> ButtonDownChanged;
 
         public RightMouseButton()
         {
             InitializeComponent();
-
-            _keyHoldTimer = new DispatcherTimer
-            {
-                Interval = TimeSpan.FromMilliseconds(App.Instance.ConfigurationManager.Configuration.HoldFrequency)
-            };
-            _keyHoldTimer.Tick += (s, e) => ButtonDownChanged?.Invoke(true);
         }
 
         public void ChangeState(bool keyState)
@@ -46,11 +39,7 @@ namespace VirtualMouseKeyboard.Controls
             DefaultBackground.Visibility = Visibility.Collapsed;
             ClickedBackground.Visibility = Visibility.Visible;
 
-            App.Instance.InputFocusedListener.SetFocusOnLast();
-
             ButtonDownChanged?.Invoke(true);
-
-            _keyHoldTimer.Start();
         }
 
         private void SetKeyUp()
@@ -60,11 +49,7 @@ namespace VirtualMouseKeyboard.Controls
             DefaultBackground.Visibility = Visibility.Visible;
             ClickedBackground.Visibility = Visibility.Collapsed;
 
-            App.Instance.InputFocusedListener.SetFocusOnLast();
-
             ButtonDownChanged?.Invoke(false);
-
-            _keyHoldTimer.Stop();
         }
 
         private void Key_MouseDown(object sender, MouseButtonEventArgs e)

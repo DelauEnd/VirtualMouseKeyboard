@@ -6,9 +6,6 @@ namespace VirtualMouseKeyboard.Behaviour.WindowsInterop
 {
     public class WinFocusListener
     {
-        public event Action TextInputGotFocus;
-        public event Action TextInputLostFocus;
-
         private AutomationElement _lastFocusedElement;
         private AutomationElement _lastSuccessfulFocus;
 
@@ -37,25 +34,11 @@ namespace VirtualMouseKeyboard.Behaviour.WindowsInterop
             {
                 try
                 {
-                    // Check if the focused element is a text input control
-                    if (element.Current.ControlType == ControlType.Edit || element.Current.ControlType == ControlType.Document)
-                    {
-                        TextInputGotFocus?.Invoke();
+                    int elementProcessId = element.Current.ProcessId;
 
+                    if (elementProcessId != _currentProcessId)
+                    {
                         _lastFocusedElement = element;
-                    }
-                    else
-                    {
-                        int elementProcessId = element.Current.ProcessId;
-
-                        // Check if the focused element is part of the current application
-                        if (elementProcessId != _currentProcessId)
-                        {
-                            TextInputLostFocus?.Invoke();
-
-                            _lastFocusedElement = null;
-                        }
-
                     }
                 }
                 catch(Exception ex)
@@ -78,6 +61,8 @@ namespace VirtualMouseKeyboard.Behaviour.WindowsInterop
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                if (_lastFocusedElement == _lastSuccessfulFocus)
+                    return;
                 _lastFocusedElement = _lastSuccessfulFocus;
                 SetFocusOnLast();
             }

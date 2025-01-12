@@ -62,7 +62,7 @@ namespace VirtualMouseKeyboard.Controls
                 Mouse.LeftButton.ButtonDownChanged += LeftButtonClick;
                 Mouse.RightButton.ButtonDownChanged += RightButtonClick;
                 Mouse.LeftButton.ButtonDownChanged += LeftButtonClick;
-                Mouse.Wheel.ScrollChanged += ScrollChanged;
+                //Mouse.Wheel.ScrollChanged += ScrollChanged;
             }
         }
 
@@ -70,17 +70,24 @@ namespace VirtualMouseKeyboard.Controls
         {
             double scrollAmount = MainWindow.Instance.ConfigurationManager.Configuration.VirtualMouseScrollAmount;
 
-
+            App.Instance.InputFocusedListener.SetFocusOnLast();
+            //MouseInterop.ScrollMouse((int)scrollAmount);
         }
 
         private void RightButtonClick(bool buttonDown)
         {
-
+            if (buttonDown)
+            {
+                App.Instance.MouseInterop.SimulateMouseAction((int)_cursorPositionX - 10, (int)_cursorPositionY-5, false);
+            }
         }
 
         private void LeftButtonClick(bool buttonDown)
         {
-
+            if (buttonDown)
+            {
+                App.Instance.MouseInterop.SimulateMouseAction((int)_cursorPositionX - 10, (int)_cursorPositionY-5, true);
+            }
         }
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)

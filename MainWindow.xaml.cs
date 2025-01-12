@@ -2,7 +2,6 @@
 using System.Windows.Interop;
 using VirtualMouseKeyboard.Behaviour.Configuration;
 using VirtualMouseKeyboard.Behaviour.WindowsInterop;
-using VirtualMouseKeyboard.Controls;
 
 namespace VirtualMouseKeyboard
 {
@@ -26,24 +25,6 @@ namespace VirtualMouseKeyboard
             // Make window clickThrough
             var hwnd = new WindowInteropHelper(this).Handle;
             AppWindowHelper.SetWindowExTransparent(hwnd);
-
-            // Assign focusListener events
-            App.Instance.InputFocusedListener.TextInputGotFocus += InputFocusedListener_TextInputFocused;
-            App.Instance.InputFocusedListener.TextInputLostFocus += InputFocusedListener_TextInputLostFocus;
-        }
-        private void InputFocusedListener_TextInputFocused()
-        {
-            Application.Current.Dispatcher.Invoke(() =>
-            {
-                this.VirtualKeyboard.Visibility = Visibility.Visible;
-            });
-        }
-        private void InputFocusedListener_TextInputLostFocus()
-        {
-            Application.Current.Dispatcher.Invoke(() =>
-            {
-                this.VirtualKeyboard.Visibility = Visibility.Collapsed;
-            });
         }
     }
 }
