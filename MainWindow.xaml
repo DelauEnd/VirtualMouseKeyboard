@@ -52,6 +52,7 @@
             </Grid>
         </StackPanel>
         <controls:VirtualCursor Mouse="{Binding ElementName=VirtualMouse}"
+            Visibility="{Binding ElementName=Window, Path=ConfigurationManager.Configuration.ShowMouse, Converter={StaticResource boolVisibilityConverter}}"
             Height="50" Width="50" 
             VerticalAlignment="Top" 
             HorizontalAlignment="Left"/>
