@@ -13,23 +13,44 @@
         Focusable="False">
     <Window.Resources>
         <converters:BoolToVisibilityConverter  x:Key="boolVisibilityConverter"/>
+
+        <!-- Storyboard for hiding MainGrid -->
+        <Storyboard x:Key="HideMainGridStoryboard">
+            <ThicknessAnimation Storyboard.TargetName="MainGrid"
+                                Storyboard.TargetProperty="Margin"
+                                Duration="0:0:0.5"
+                                To="0,0,0,-425" />
+        </Storyboard>
+
+        <!-- Storyboard for showing MainGrid -->
+        <Storyboard x:Key="ShowMainGridStoryboard">
+            <ThicknessAnimation Storyboard.TargetName="MainGrid"
+                                Storyboard.TargetProperty="Margin"
+                                Duration="0:0:0.5"
+                                To="0,0,0,0" />
+        </Storyboard>
     </Window.Resources>
     <Window.Background>
         <SolidColorBrush Opacity="0.1" Color="Transparent"/>
     </Window.Background>
     <Grid>
-        <Grid Name="MainGrid" Height="400" Margin="0,0,0,50" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" Margin="10" Visibility="{Binding ElementName=Window, Path=ConfigurationManager.Configuration.ShowKeyboard, Converter={StaticResource boolVisibilityConverter}}">
-                <controls:OnScreenKeyboard x:Name="VirtualKeyboard" Width="1000" />
+        <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Name="MainGrid">
+            <Button Width="50" Height="50" HorizontalAlignment="Left" Margin="10,0,0,0"
+                    Foreground="Black" Background="AntiqueWhite" FontSize="30"
+                    Name="HideButton" Click="HideButton_Click"/>
+            <Grid Height="400" Margin="0,0,0,50" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" Margin="10" Visibility="{Binding ElementName=Window, Path=ConfigurationManager.Configuration.ShowKeyboard, Converter={StaticResource boolVisibilityConverter}}">
+                    <controls:OnScreenKeyboard x:Name="VirtualKeyboard" Width="1000" />
+                </Grid>
+                <Grid Grid.Column="1" Margin="10" Visibility="{Binding ElementName=Window, Path=ConfigurationManager.Configuration.ShowMouse, Converter={StaticResource boolVisibilityConverter}}">
+                    <controls:OnScreenMouse x:Name="VirtualMouse" Width="200"/>
+                </Grid>
             </Grid>
-            <Grid Grid.Column="1" Margin="10" Visibility="{Binding ElementName=Window, Path=ConfigurationManager.Configuration.ShowMouse, Converter={StaticResource boolVisibilityConverter}}">
-                <controls:OnScreenMouse x:Name="VirtualMouse" Width="200"/>
-            </Grid>
-        </Grid>
+        </StackPanel>
         <controls:VirtualCursor Mouse="{Binding ElementName=VirtualMouse}"
             Height="50" Width="50" 
             VerticalAlignment="Top" 
